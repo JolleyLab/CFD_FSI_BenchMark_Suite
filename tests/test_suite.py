@@ -3,9 +3,8 @@
 
     python tests/test_suite.py            # all tests; also runs under pytest
 
-1. Release index (meshes.json, SHA256SUMS): every level has an svmp and an mfem archive with a
-   unique name, a SHA-256 that matches SHA256SUMS, and a size under GitHub's 2 GiB asset limit;
-   at most 1000 assets per release.
+1. Release index (meshes.json, SHA256SUMS): one zip per case, named <case>.zip, with a SHA-256
+   that matches SHA256SUMS and a size under GitHub's 2 GiB asset limit; every level listed.
 2. Case tree: every level in meshes.json has its case files in git (solver.xml, flow files it
    references, case.json, quality reports, attribute map, executable run.sh), every case folder
    in git is in meshes.json, and each case carries its source's licence notice (DATA_LICENSE.md).
@@ -29,25 +28,26 @@ def test_release_index():
     idx = _index()
     assert idx["base_url"] == f"https://github.com/{idx['repository']}/releases/download/{idx['tag']}"
     sums = dict(reversed(l.split()) for l in open(os.path.join(ROOT, "SHA256SUMS")).read().split("\n") if l.strip())
-    names = []
-    for level, v in idx["levels"].items():
-        assert set(v["parts"]) == {"svmp", "mfem"}, level
-        for part, a in v["parts"].items():
-            assert a["archive"] == f"{level.replace('/', '__')}__{part}.tar.gz", a["archive"]
-            assert sums.get(a["archive"]) == a["sha256"], f"{a['archive']}: SHA256SUMS mismatch"
-            assert 0 < a["bytes"] < 2 * 1024**3, a["archive"]
-            names.append(a["archive"])
-        assert v["element_type"] in ("tet4", "hex8") and v["elements"] > 0, level
-    assert len(names) == len(set(names)) == len(sums), "archive names unique and all in SHA256SUMS"
-    assert len(names) + 1 <= 1000, "GitHub: at most 1000 assets per release"
+    for case, v in idx["cases"].items():
+        assert v["archive"] == f"{case}.zip", v["archive"]
+        assert sums.get(v["archive"]) == v["sha256"], f"{v['archive']}: SHA256SUMS mismatch"
+        assert 0 < v["bytes"] < 2 * 1024**3, f"{v['archive']}: over GitHub's 2 GiB asset limit"
+        assert v["levels"], case
+        for lv, info in v["levels"].items():
+            assert info["element_type"] in ("tet4", "hex8") and info["elements"] > 0, f"{case}/{lv}"
+    assert set(sums) == {v["archive"] for v in idx["cases"].values()}, "SHA256SUMS lists exactly the case zips"
+
+
+def _levels():
+    return [f"{c}/{lv}" for c, v in _index()["cases"].items() for lv in v["levels"]]
 
 
 def test_case_tree():
-    idx = _index()
+    levels = _levels()
     in_git = {os.path.relpath(os.path.dirname(p), os.path.join(ROOT, "cases"))
               for p in glob.glob(os.path.join(ROOT, "cases", "*", "*", "case.json"))}
-    assert in_git == set(idx["levels"]), f"case folders vs meshes.json: {sorted(in_git ^ set(idx['levels']))}"
-    for level in idx["levels"]:
+    assert in_git == set(levels), f"case folders vs meshes.json: {sorted(in_git ^ set(levels))}"
+    for level in levels:
         d = os.path.join(ROOT, "cases", level)
         for f in ("solver.xml", "case.json", "quality.json", "quality.md", "run.sh"):
             assert os.path.isfile(os.path.join(d, f)), f"{level}: {f}"
@@ -75,7 +75,7 @@ def test_tools_compile_and_list():
         py_compile.compile(f, doraise=True)
     out = subprocess.run([sys.executable, os.path.join(ROOT, "tools", "fetch_meshes.py"), "--list"],
                          capture_output=True, text=True, check=True).stdout
-    assert len(out.strip().split("\n")) == len(_index()["levels"])
+    assert len(out.strip().split("\n")) == len(_levels()) + len(_index()["cases"])
 
 
 def test_tiny_case_verifies():

@@ -8,14 +8,14 @@ elements (tet4; hex8 for `pipe_hex`).
 
 ## Assets
 
-Two archives per case level, so you download only what your solver reads:
+One zip per case (`<case>.zip`, 17 to 373 MB), each holding every level of that case:
 
-- `<case>__<level>__svmp.tar.gz`: svMultiPhysics mesh-complete (`mesh/`: volume VTU and face VTPs)
-- `<case>__<level>__mfem.tar.gz`: `mfem/<case>_<level>.msh`, Gmsh 2.2 binary, read directly by MFEM
-- `SHA256SUMS`: checksums of every archive
+- `cases/<case>/<level>/mesh/`: svMultiPhysics mesh-complete (volume VTU and face VTPs)
+- `cases/<case>/<level>/mfem/<case>_<level>.msh`: Gmsh 2.2 binary, read directly by MFEM
+- the case files and the licence notices that apply to that case
+- `SHA256SUMS`: checksums of the 12 zips
 
-The case files (`solver.xml`, flow files, `case.json`, quality reports, attribute maps) are in
-the repository. From a checkout:
+Unzip into a checkout of the repository, or let the downloader extract only what you need:
 
 ```sh
 python tools/fetch_meshes.py --list

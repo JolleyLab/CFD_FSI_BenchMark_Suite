@@ -55,6 +55,23 @@ def sha256(path):
     return h.hexdigest()
 
 
+def index_bundles(bundles_dir, tag, levels):
+    """meshes.json for per-case zip assets: case -> archive, bytes, sha256, and its levels."""
+    cases = {}
+    for z in sorted(glob.glob(os.path.join(bundles_dir, "*.zip"))):
+        case = os.path.basename(z)[:-4]
+        cases[case] = {"archive": os.path.basename(z), "bytes": os.path.getsize(z), "sha256": sha256(z),
+                       "levels": {k.split("/")[1]: {kk: v[kk] for kk in ("element_type", "elements", "points")}
+                                  for k, v in levels.items() if k.split("/")[0] == case}}
+    missing = {k.split("/")[0] for k in levels} - set(cases)
+    if missing:
+        sys.exit(f"bundles missing for {sorted(missing)}; run with --bundles first")
+    return {"repository": REPO, "tag": tag, "base_url": f"https://github.com/{REPO}/releases/download/{tag}",
+            "note": "one zip per case holding every level: mesh/ (svMultiPhysics mesh-complete) and "
+                    "mfem/<case>_<level>.msh (Gmsh 2.2 for MFEM); tools/fetch_meshes.py extracts the levels and solver you ask for",
+            "cases": cases}
+
+
 def write_bundles(out, cases):
     """One zip per case holding cases/<case>/<level>/ exactly as the release tree plus fetched meshes."""
     import zipfile
@@ -88,6 +105,8 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "release"))
     ap.add_argument("--tag", default="v1.0", help="release tag the archives are attached to")
     ap.add_argument("--bundles", action="store_true", help="also write one zip per case (release/bundles)")
+    ap.add_argument("--assets", choices=("bundles", "levels"), default="bundles",
+                    help="what the release assets are: per-case zips (v1.0) or per-level, per-solver tar.gz")
     a = ap.parse_args()
     tree = os.path.join(a.out, "CFD_FSI_BenchMark_Suite"); meshes = os.path.join(a.out, "meshes")
     if os.path.exists(tree):
@@ -146,17 +165,20 @@ def main():
         write_bundles(os.path.join(a.out, "bundles"), sorted({k.split("/")[0] for k in index}))
     if len(sums) + 1 > MAX_ASSETS:
         sys.exit(f"{len(sums)} archives exceed GitHub's {MAX_ASSETS} assets per release")
-    shutil.copy(os.path.join(meshes, "SHA256SUMS"), tree)
-    json.dump({"repository": REPO, "tag": a.tag,
-               "base_url": f"https://github.com/{REPO}/releases/download/{a.tag}",
-               "note": "one archive per case level and solver: <case>__<level>__svmp.tar.gz (svMultiPhysics "
-                       "mesh-complete) and <case>__<level>__mfem.tar.gz (Gmsh 2.2 .msh for MFEM)",
-               "levels": index}, open(os.path.join(tree, "meshes.json"), "w"), indent=2)
-    open(os.path.join(tree, ".gitignore"), "w").write("# meshes are fetched, not committed\ncases/*/*/mesh/\ncases/*/*/mfem/*.mesh\ncases/*/*/mfem/*.msh\ncases/*/*/LICENSE\ncases/*/*/DATA_LICENSE.md\n*.tar.gz\n*-procs/\nsolver.run.xml\nrun_*.log\n__pycache__/\n")
+    if a.assets == "bundles":
+        idx = index_bundles(os.path.join(a.out, "bundles"), a.tag, index)
+        shutil.copy(os.path.join(a.out, "bundles", "SHA256SUMS"), tree)
+    else:
+        shutil.copy(os.path.join(meshes, "SHA256SUMS"), tree)
+        idx = {"repository": REPO, "tag": a.tag, "base_url": f"https://github.com/{REPO}/releases/download/{a.tag}",
+               "note": "one archive per case level and solver: <case>__<level>__svmp.tar.gz and <case>__<level>__mfem.tar.gz",
+               "levels": index}
+    json.dump(idx, open(os.path.join(tree, "meshes.json"), "w"), indent=2)
+    open(os.path.join(tree, ".gitignore"), "w").write("# meshes are fetched, not committed\ncases/*/*/mesh/\ncases/*/*/mfem/*.mesh\ncases/*/*/mfem/*.msh\ncases/*/*/LICENSE\ncases/*/*/DATA_LICENSE.md\n*.tar.gz\n*-procs/\nsolver.run.xml\nrun_*.log\n__pycache__/\n.downloads/\n")
     total = sum(p["bytes"] for v in index.values() for p in v["parts"].values())
     print(f"{len(index)} levels, {len(sums)} archives, {total/1e9:.2f} GB; tree at {tree}")
-    print(f"upload (when approved): gh release create {a.tag} --repo {REPO} --title 'CFD Benchmark Suite {a.tag}' "
-          f"--notes-file {tree}/RELEASE_NOTES.md {meshes}/*.tar.gz {meshes}/SHA256SUMS")
+    up = f"{a.out}/bundles/*.zip {a.out}/bundles/SHA256SUMS" if a.assets == "bundles" else f"{meshes}/*.tar.gz {meshes}/SHA256SUMS"
+    print(f"upload: gh release upload {a.tag} {up} --repo {REPO}")
 
 
 if __name__ == "__main__":

@@ -9,3 +9,4 @@ cases/*/*/DATA_LICENSE.md
 solver.run.xml
 run_*.log
 __pycache__/
+.downloads/

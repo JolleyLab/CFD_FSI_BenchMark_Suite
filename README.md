@@ -13,18 +13,19 @@ Slicer meshing modules run headless; see [Credits](#credits) and `REFERENCES.md`
 ## Quick start
 
 ```sh
-python tools/fetch_meshes.py --list                              # levels, element counts, download sizes
+python tools/fetch_meshes.py --list                              # cases, levels, element counts, zip sizes
 python tools/fetch_meshes.py 0031_H_ABAO_AAA/medium --solver svmp
 cd cases/0031_H_ABAO_AAA/medium
 ./run.sh 8 20                                   # 8 MPI ranks, 20 time steps
 ```
 
 Meshes are not stored in git. They are assets of the suite's
-[GitHub Release](https://github.com/JolleyLab/CFD_FSI_BenchMark_Suite/releases) (one tagged
-version, e.g. `v1.0`), with one archive per case level and solver, so you download only what you
-use: `__svmp` (svMultiPhysics mesh-complete, about 70 MB at 5 M elements) or `__mfem` (Gmsh
-`.msh`, about 80 MB at 5 M elements). `fetch_meshes.py` needs only the Python standard library
-and checks each archive's SHA-256 (`meshes.json`, `SHA256SUMS`); no GitHub login is needed.
+[GitHub Release](https://github.com/JolleyLab/CFD_FSI_BenchMark_Suite/releases) (v1.0): one zip per
+case (17 to 373 MB) holding every level. `fetch_meshes.py` downloads the zip for each case you
+name and extracts only the levels and solver you ask for: `--solver svmp` (svMultiPhysics
+mesh-complete) or `--solver mfem` (Gmsh `.msh`). It needs only the Python standard library, checks
+each zip's SHA-256 (`meshes.json`, `SHA256SUMS`), keeps the zip in `.downloads/` for reuse, and
+needs no GitHub login.
 `pip install -r requirements.txt` is needed only for the verifier and the build tools.
 
 `run.sh` uses `$SVMULTIPHYSICS`, else `svmultiphysics` on the PATH, else the official Docker
@@ -82,10 +83,10 @@ cases/<case>/<level>/
   quality.md / quality.json     element quality report
   mfem/*_attributes.json        boundary attribute -> face name
   VMR-README-COPYRIGHT.txt      VMR cases only: the licence notice that travels with the data
-  -- fetched by tools/fetch_meshes.py --solver svmp --
+  -- extracted by tools/fetch_meshes.py --solver svmp --
   mesh/mesh-complete.mesh.vtu   volume mesh (GlobalNodeID, GlobalElementID, ModelRegionID)
   mesh/mesh-complete.exterior.vtp, mesh/walls_combined.vtp, mesh/mesh-surfaces/<face>.vtp
-  -- fetched by tools/fetch_meshes.py --solver mfem --
+  -- extracted by tools/fetch_meshes.py --solver mfem --
   mfem/<case>_<level>.msh       Gmsh 2.2 binary, physical groups = MFEM attributes
 ```
 
@@ -125,7 +126,7 @@ PASS / WARN / FAIL per check. Every level in this release passes.
 **CI.** `ci.yml` runs `tests/test_suite.py` on every push: release index and checksums, case
 files present, tools compile, and a committed tiny pipe case (`tests/cases/pipe_tiny`, about
 15 k tets) through the full verifier and an MFEM round trip. `smoke.yml` (manual only, from the
-Actions tab) downloads every coarse level from the release and verifies it, including the PyMFEM
+Actions tab) downloads every case zip from the release (about 3.4 GB), extracts the coarse levels and verifies them, including the PyMFEM
 load test and smoke solve. CI does not run svMultiPhysics; `run.sh` is for local runs. Three levels per case support a Grid
 Convergence Index study of solver outputs (Celik et al. 2008) once results exist.
 

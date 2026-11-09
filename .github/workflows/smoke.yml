@@ -1,5 +1,5 @@
-# Smoke test (manual only: Actions > smoke > Run workflow): downloads every coarse level from the
-# release assets (about 0.4 GB) and runs the verifier on it, including the PyMFEM load test and
+# Smoke test (manual only: Actions > smoke > Run workflow): downloads every case zip from the
+# release (about 3.4 GB), extracts the coarse levels and runs the verifier on each, including the PyMFEM load test and
 # Laplace smoke solve. No svMultiPhysics in CI.
 name: smoke
 on: workflow_dispatch
