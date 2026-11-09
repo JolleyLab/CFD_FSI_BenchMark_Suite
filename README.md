@@ -22,8 +22,7 @@ Typical uses:
   flows and wall shear stress; three mesh levels per case support a grid convergence study.
 - **Regression testing:** the verifier and the small test case run in CI.
 
-Jolley Lab, Children's Hospital of Philadelphia, 2026. Meshes built with the SlicerHeart and
-SimVascular Slicer modules run headless; see [Credits](#credits) and `REFERENCES.md`.
+Meshes built with the SlicerHeart and SimVascular Slicer modules run headless; see [Credits](#credits) and `REFERENCES.md`.
 
 ## Quick start
 
