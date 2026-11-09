@@ -22,7 +22,7 @@ Typical uses:
   flows and wall shear stress; three mesh levels per case support a grid convergence study.
 - **Regression testing:** the verifier and the small test case run in CI.
 
-Meshes built with the SlicerHeart and SimVascular Slicer modules run headless; see [Credits](#credits) and `REFERENCES.md`.
+Meshes built with the SlicerHeart and SimVascular Slicer modules run headless; see [Credits](#licence-acknowledgement-and-credits) and `REFERENCES.md`.
 
 ## Quick start
 
@@ -194,7 +194,7 @@ with it, as the Slicer extension is) on request.
 ALE/FSI meshes (deferred) and hexahedral meshes beyond the pipe. MFEM ASCII `.mesh` files are
 not shipped (see MFEM above).
 
-## Licence, acknowledgement and credits {#credits}
+## Licence, acknowledgement and credits
 
 - **Code** (tools, tests, workflows, docs): BSD 3-Clause, see `LICENSE`.
 - **Data** keep their sources' terms (`DATA_LICENSE.md`): VMR-derived cases under the VMR
