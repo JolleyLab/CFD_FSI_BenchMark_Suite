@@ -1,0 +1,17 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall_branch_b",
+    "2": "wall_branch_c",
+    "3": "wall_aorta",
+    "4": "wall_branch_a",
+    "5": "cap_outlet_left_common_carotid",
+    "6": "cap_outlet_left_subclavian",
+    "7": "cap_inlet_ascending_aorta",
+    "8": "cap_outlet_brachiocephalic",
+    "9": "cap_outlet_descending_aorta"
+  },
+  "length_unit": "cm"
+}

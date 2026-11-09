@@ -1,0 +1,36 @@
+{
+  "name": "stanford_reference_pipe_1M",
+  "resolution": "pipe_1M",
+  "elements": {
+    "tet4": 1002240,
+    "points": 181875
+  },
+  "faces": {
+    "1": "cap_inlet",
+    "2": "cap_outlet",
+    "3": "wall"
+  },
+  "units": "cm",
+  "source": "benchmarks/large_pipe/make_pipe.py on sujaldave/svMultiPhysics branch gpuAssemblyTest (from lassoan gpu-exp); solver.xml from the same folder",
+  "boundary_conditions": {
+    "cap_inlet": "steady flux 100 cm3/s, parabolic",
+    "cap_outlet": "resistance 16000 dyn s/cm5",
+    "wall": "no-slip"
+  },
+  "note": "bit-identical regeneration of the 1M-tet pipe used in svMultiPhysics issue #750; face files are inlet/outlet/wall as in the original (solver.xml unchanged)",
+  "mfem_attributes": {
+    "element_attributes": {
+      "1": "fluid"
+    },
+    "boundary_attributes": {
+      "1": "cap_inlet",
+      "2": "cap_outlet",
+      "3": "wall"
+    },
+    "notes": null,
+    "length_unit": "cm"
+  },
+  "notes": [
+    "relabelled from 'reference' to 'fine' by element count"
+  ]
+}

@@ -1,0 +1,18 @@
+# Smoke test (manual only: Actions > smoke > Run workflow): downloads every coarse level from the
+# release assets (about 0.4 GB) and runs the verifier on it, including the PyMFEM load test and
+# Laplace smoke solve. No svMultiPhysics in CI.
+name: smoke
+on: workflow_dispatch
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install vtk numpy mfem
+      - run: python tools/fetch_meshes.py --level coarse && python tools/fetch_meshes.py stanford_reference
+      - run: |
+          for d in cases/*/coarse cases/stanford_reference/pipe_1M; do
+            python tools/verify_case.py "$d" || exit 1
+          done

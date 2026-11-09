@@ -1,0 +1,72 @@
+{
+  "name": "aortoiliac_svmp_iliac",
+  "description": "Aorto-iliac segment (distal abdominal aorta continuing into the left common iliac, with the right common iliac branching off), rigid-wall CFD, pulsatile inflow, RCR outlets. The geometry Stanford already uses as its 'iliac' performance case, offered here at benchmark resolutions.",
+  "surface": "surfaces/iliac_svmp_model.vtp",
+  "source": {
+    "repository": "SimVascular/svMultiPhysics tests (tests/cases/fluid/iliac_artery/mesh), exterior surface of the test mesh",
+    "note": "SimVascular example geometry (aortofemoral demo family); face names taken from the test case's mesh-surfaces file names"
+  },
+  "license": "svMultiPhysics repository license (BSD-style, see LICENSE.txt in SimVascular/svMultiPhysics); test data distributed with the repository",
+  "units": "cm",
+  "face_id_array": "ModelFaceID",
+  "cap_id_array": "CapID",
+  "surface_is_capped": true,
+  "faces": {
+    "3": "cap_aorta",
+    "5": "cap_aorta_2",
+    "4": "cap_right_iliac",
+    "1": "wall_aorta",
+    "2": "wall_right_iliac"
+  },
+  "face_name_note": "Names follow the svMultiPhysics test case: cap_aorta is the proximal (inlet) cap (d 2.4 cm), cap_aorta_2 the distal aortic/left iliac outlet (d 1.0), cap_right_iliac the right iliac outlet (d 1.1).",
+  "bc": {
+    "inflow": {
+      "cap": "cap_aorta",
+      "waveform": "aortic",
+      "mean_flow_cm3s": 25.0,
+      "period_s": 1.0
+    },
+    "outlets": {
+      "type": "RCR",
+      "mean_pressure_mmHg": 90.0,
+      "Rp_fraction": 0.06,
+      "C_total_cm5_per_dyn": 0.0003,
+      "area_exponent": 1.0
+    }
+  },
+  "solver": {
+    "time_step_s": 0.001,
+    "cycles": 1,
+    "save_every": 50,
+    "density": 1.06,
+    "viscosity": 0.04
+  },
+  "mesher": "netgen",
+  "calibration_h": 0.12,
+  "resolutions": {
+    "coarse": 1500000,
+    "medium": 3000000,
+    "fine": 5000000
+  },
+  "tolerance": 0.35,
+  "max_attempts": 2,
+  "calibration": {
+    "h": 0.12,
+    "n_tets": 2444792,
+    "seconds": 394.363849401474
+  },
+  "observations": [
+    [
+      0.14122062578047664,
+      1162446
+    ],
+    [
+      0.11473986066272854,
+      2644731
+    ],
+    [
+      0.08344879481392603,
+      5161455
+    ]
+  ]
+}

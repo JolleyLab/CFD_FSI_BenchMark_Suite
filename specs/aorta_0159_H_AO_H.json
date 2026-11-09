@@ -1,0 +1,91 @@
+{
+  "name": "aorta_0159_H_AO_H",
+  "description": "Adult thoracic aorta (ascending aorta, arch with three branches, descending aorta), rigid-wall CFD, pulsatile inflow, RCR outlets.",
+  "surface": "surfaces/0159_H_AO_H_model.vtp",
+  "source": {
+    "repository": "Vascular Model Repository (vascularmodel.com)",
+    "model": "0159_H_AO_H",
+    "vmr_record": "healthy human aorta segmented from the CT of model 0159_H_CORO_SVG; SimVascular model surface (ModelFaceID / CapID) as redistributed in vmtk/vmtk-test-data (input/vmr-0159-aorta-surface.vtp)",
+    "sdr_doi": "see dataset/dataset-svprojects.csv in SimVascular/vascularmodel",
+    "project_zip": "https://www.vascularmodel.com/svprojects/0159_H_AO_H.zip"
+  },
+  "license": "VMR README-COPYRIGHT: free use for research and development, copyright notice must accompany copies, acknowledge NLM R01LM013120 / NHLBI HHSN268201100035C and/or cite Wilson et al. 2013 (doi:10.1115/1.4025983). See surfaces/VMR-README-COPYRIGHT.txt",
+  "units": "cm",
+  "face_id_array": "ModelFaceID",
+  "cap_id_array": "CapID",
+  "surface_is_capped": true,
+  "faces": {
+    "7": "cap_inlet_ascending_aorta",
+    "9": "cap_outlet_descending_aorta",
+    "8": "cap_outlet_brachiocephalic",
+    "5": "cap_outlet_left_common_carotid",
+    "6": "cap_outlet_left_subclavian",
+    "3": "wall_aorta",
+    "4": "wall_branch_a",
+    "1": "wall_branch_b",
+    "2": "wall_branch_c"
+  },
+  "face_name_note": "Branch cap names are anatomical assignments from position and calibre (right-sided largest cap = brachiocephalic; the two left-sided caps = left common carotid (smaller) and left subclavian); confirm against the VMR project before publishing.",
+  "bc": {
+    "inflow": {
+      "cap": "cap_inlet_ascending_aorta",
+      "waveform": "aortic",
+      "mean_flow_cm3s": 83.3,
+      "period_s": 1.0
+    },
+    "outlets": {
+      "type": "RCR",
+      "mean_pressure_mmHg": 93.0,
+      "flow_split": {
+        "cap_outlet_descending_aorta": 0.7
+      },
+      "Rp_fraction": 0.06,
+      "C_total_cm5_per_dyn": 0.001,
+      "area_exponent": 1.0
+    }
+  },
+  "solver": {
+    "time_step_s": 0.001,
+    "cycles": 1,
+    "save_every": 50,
+    "density": 1.06,
+    "viscosity": 0.04
+  },
+  "mesher": "netgen",
+  "calibration": {
+    "h": 0.15,
+    "n_tets": 895619,
+    "seconds": 135
+  },
+  "resolutions": {
+    "coarse": 1500000,
+    "medium": 3000000,
+    "fine": 5000000
+  },
+  "observations": [
+    [
+      0.12548,
+      3519334
+    ],
+    [
+      0.14024265230374694,
+      1976292
+    ],
+    [
+      0.14460615114830044,
+      1962001
+    ],
+    [
+      0.16538295585436852,
+      959194
+    ],
+    [
+      0.11726756426370111,
+      2919016
+    ],
+    [
+      0.11050406205664054,
+      4401147
+    ]
+  ]
+}

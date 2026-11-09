@@ -1,0 +1,92 @@
+{
+  "name": "tcpc_idealized",
+  "description": "Idealized extracardiac Fontan (total cavopulmonary connection): SVC d 1.4 cm from above, IVC conduit d 1.8 cm from below offset 0.8 cm toward the RPA, LPA d 1.2 / RPA d 1.3 cm; rigid-wall CFD with two caval inflows and pulmonary resistance outlets. Synthetic stand-in for VMR 0054_H_PULMFON_TAT / 0065_H_PULMFON_SVD until those projects are pulled.",
+  "surface": "surfaces/tcpc_idealized_model.vtp",
+  "source": {
+    "generator": "tools/make_synthetic.py tcpc_idealized"
+  },
+  "license": "synthetic; released with the suite",
+  "units": "cm",
+  "face_id_array": "ModelFaceID",
+  "cap_id_array": "CapID",
+  "surface_is_capped": true,
+  "faces": {
+    "4": "cap_inlet_SVC",
+    "5": "cap_inlet_IVC",
+    "2": "cap_outlet_LPA",
+    "3": "cap_outlet_RPA",
+    "1": "wall"
+  },
+  "bc": {
+    "inflow": {
+      "cap": [
+        "cap_inlet_SVC",
+        "cap_inlet_IVC"
+      ],
+      "waveform": "venous",
+      "mean_flow_cm3s": [
+        20.0,
+        30.0
+      ],
+      "period_s": 1.0,
+      "pulsatility": 0.15,
+      "phase": [
+        0.0,
+        0.5
+      ]
+    },
+    "outlets": {
+      "type": "Resistance",
+      "pvr_wood_units": 2.0,
+      "flow_split": {
+        "cap_outlet_LPA": 0.45,
+        "cap_outlet_RPA": 0.55
+      },
+      "distal_pressure_mmHg": 0.0
+    }
+  },
+  "bc_note": "Total caval flow 3.0 L/min (SVC 40 % / IVC 60 %, 15 % modulation), PVR 2 WU split 45/55 LPA/RPA (R_LPA = 356, R_RPA = 291 dyn s/cm^5) with zero distal pressure, giving ~12 mmHg mean Fontan pressure; typical pediatric Fontan values.",
+  "solver": {
+    "time_step_s": 0.001,
+    "cycles": 1,
+    "save_every": 50,
+    "density": 1.06,
+    "viscosity": 0.04
+  },
+  "mesher": "netgen",
+  "calibration_h": 0.12,
+  "resolutions": {
+    "coarse": 1500000,
+    "medium": 3000000,
+    "fine": 5000000
+  },
+  "tolerance": 0.35,
+  "max_attempts": 2,
+  "calibration": {
+    "h": 0.12,
+    "n_tets": 604767,
+    "seconds": 124.15052556991577
+  },
+  "observations": [
+    [
+      0.08865029560627606,
+      1100781
+    ],
+    [
+      0.053699472944321334,
+      6114158
+    ],
+    [
+      0.06612653283767203,
+      5749055
+    ],
+    [
+      0.0709069788746795,
+      2992797
+    ],
+    [
+      0.06877976950843911,
+      3662580
+    ]
+  ]
+}

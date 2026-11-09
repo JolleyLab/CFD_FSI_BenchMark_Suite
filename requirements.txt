@@ -1,0 +1,7 @@
+# Running a case needs only svMultiPhysics (or Docker). These are for the tools:
+vtk>=9.3
+numpy
+mfem              # PyMFEM: MFEM load test and smoke solve in tools/verify_case.py
+# Rebuilding meshes additionally needs:
+# vmtk==1.5.2  netgen-mesher==6.2.2606  pytetwild==0.4.2
+# and the SlicerSimVascular packages: pip install -e ext/SlicerSimVascular/SimVascularMeshPrep ext/SlicerSimVascular/SimVascularMultiPhysics ext/SlicerSimVascular/SimVascularROM

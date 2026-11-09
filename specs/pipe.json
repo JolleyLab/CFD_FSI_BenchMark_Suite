@@ -1,0 +1,79 @@
+{
+  "name": "pipe",
+  "description": "Straight rigid pipe, d 2.0 cm, L 11 cm (after end clips), pulsatile inflow and one RCR outlet: the verification baseline (Poiseuille / Womersley) and the strong-scaling case used in svMultiPhysics issue #750.",
+  "surface": "surfaces/pipe_model.vtp",
+  "source": {
+    "generator": "tools/make_synthetic.py pipe"
+  },
+  "license": "synthetic; released with the suite",
+  "units": "cm",
+  "face_id_array": "ModelFaceID",
+  "cap_id_array": "CapID",
+  "surface_is_capped": true,
+  "faces": {
+    "3": "cap_inlet",
+    "2": "cap_outlet",
+    "1": "wall"
+  },
+  "bc": {
+    "inflow": {
+      "cap": "cap_inlet",
+      "waveform": "aortic",
+      "mean_flow_cm3s": 30.0,
+      "period_s": 1.0
+    },
+    "outlets": {
+      "type": "RCR",
+      "mean_pressure_mmHg": 90.0,
+      "Rp_fraction": 0.09,
+      "C_total_cm5_per_dyn": 0.00015
+    }
+  },
+  "solver": {
+    "time_step_s": 0.001,
+    "cycles": 1,
+    "save_every": 50,
+    "density": 1.06,
+    "viscosity": 0.04
+  },
+  "mesher": "netgen",
+  "calibration_h": 0.12,
+  "resolutions": {
+    "coarse": 1500000,
+    "medium": 3000000,
+    "fine": 6000000
+  },
+  "tolerance": 0.35,
+  "max_attempts": 1,
+  "calibration": {
+    "h": 0.12,
+    "n_tets": 663164,
+    "seconds": 128
+  },
+  "observations": [
+    [
+      0.09141647560219666,
+      1311300
+    ],
+    [
+      0.06570394474161918,
+      3854674
+    ],
+    [
+      0.060671626522797395,
+      3959702
+    ],
+    [
+      0.0607,
+      3959702
+    ],
+    [
+      0.0657,
+      3854674
+    ],
+    [
+      0.052822958581867516,
+      5538105
+    ]
+  ]
+}

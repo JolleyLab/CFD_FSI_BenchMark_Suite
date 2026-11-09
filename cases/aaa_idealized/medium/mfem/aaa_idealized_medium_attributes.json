@@ -1,0 +1,12 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall",
+    "2": "cap_outlet_left_common_iliac",
+    "3": "cap_outlet_right_common_iliac",
+    "4": "cap_inlet_infrarenal_aorta"
+  },
+  "length_unit": "cm"
+}

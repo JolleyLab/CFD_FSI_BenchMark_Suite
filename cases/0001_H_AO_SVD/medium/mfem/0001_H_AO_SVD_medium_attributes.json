@@ -1,0 +1,16 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall",
+    "2": "cap_inflow",
+    "3": "cap_outflow",
+    "4": "cap_BiachioA",
+    "5": "cap_BiachioA_RSA",
+    "6": "cap_LCCA",
+    "7": "cap_LSA"
+  },
+  "notes": null,
+  "length_unit": "cm"
+}

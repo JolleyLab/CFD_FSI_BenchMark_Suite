@@ -1,0 +1,14 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall_aorta",
+    "2": "wall_right_iliac",
+    "3": "cap_aorta",
+    "4": "cap_right_iliac",
+    "5": "cap_aorta_2"
+  },
+  "notes": null,
+  "length_unit": "cm"
+}

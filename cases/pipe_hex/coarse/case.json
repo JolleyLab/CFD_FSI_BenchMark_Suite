@@ -1,0 +1,31 @@
+{
+  "name": "pipe_hex",
+  "resolution": "coarse",
+  "grid": {
+    "n_core": 35,
+    "n_rad": 18,
+    "nz": 387,
+    "h": 0.0285
+  },
+  "elements": {
+    "hex8": 1445570,
+    "points": 1476792
+  },
+  "faces": {
+    "1": "wall",
+    "2": "cap_inlet",
+    "3": "cap_outlet"
+  },
+  "boundary_conditions": {
+    "cap_inlet": "aortic waveform, mean 30 cm3/s",
+    "cap_outlet": {
+      "Rp": 359.9694,
+      "C": 0.00015,
+      "Rd": 3639.6906000000004,
+      "Pd": 0.0
+    }
+  },
+  "units": "cm",
+  "purpose": "performance and smoke tests; the smallest outlets are under-resolved (~4.5 elements across); use medium, fine or published for accuracy comparisons",
+  "element_type": "hex8"
+}

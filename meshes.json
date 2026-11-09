@@ -1,0 +1,671 @@
+{
+  "repository": "JolleyLab/CFD_FSI_BenchMark_Suite",
+  "tag": "v1.0",
+  "base_url": "https://github.com/JolleyLab/CFD_FSI_BenchMark_Suite/releases/download/v1.0",
+  "note": "one archive per case level and solver: <case>__<level>__svmp.tar.gz (svMultiPhysics mesh-complete) and <case>__<level>__mfem.tar.gz (Gmsh 2.2 .msh for MFEM)",
+  "levels": {
+    "0001_H_AO_SVD/coarse": {
+      "element_type": "tet4",
+      "elements": 1045575,
+      "points": 188764,
+      "parts": {
+        "svmp": {
+          "archive": "0001_H_AO_SVD__coarse__svmp.tar.gz",
+          "bytes": 15702141,
+          "sha256": "ab7b0eb5cff9ab41e47ff570aec375b598897b47ee27b9d3005ec26b397a0eff"
+        },
+        "mfem": {
+          "archive": "0001_H_AO_SVD__coarse__mfem.tar.gz",
+          "bytes": 18513293,
+          "sha256": "ea5c3fc5ad9048e263bb267da190f83f207e5d39d4da93412b861c6dbf0a09b6"
+        }
+      }
+    },
+    "0001_H_AO_SVD/fine": {
+      "element_type": "tet4",
+      "elements": 5159149,
+      "points": 905423,
+      "parts": {
+        "svmp": {
+          "archive": "0001_H_AO_SVD__fine__svmp.tar.gz",
+          "bytes": 73309061,
+          "sha256": "c09866952d63408ec6dacf0ad2f07f5d6d48c0f7d01b8d11f3c1ad672bbe989b"
+        },
+        "mfem": {
+          "archive": "0001_H_AO_SVD__fine__mfem.tar.gz",
+          "bytes": 94514839,
+          "sha256": "11612870a28a14670f9775e74dca566630644a64b254bd4e2e70b3abb5f59953"
+        }
+      }
+    },
+    "0001_H_AO_SVD/medium": {
+      "element_type": "tet4",
+      "elements": 2496985,
+      "points": 444688,
+      "parts": {
+        "svmp": {
+          "archive": "0001_H_AO_SVD__medium__svmp.tar.gz",
+          "bytes": 36342228,
+          "sha256": "68a270e7d64e52c66fbb1f869ce081144f1223fcd1d89380cd46f3a7a331e9b5"
+        },
+        "mfem": {
+          "archive": "0001_H_AO_SVD__medium__mfem.tar.gz",
+          "bytes": 45156594,
+          "sha256": "9f8f4eac3d31cbf70a192117c6f8a315019b3325bc1e6b8dd3a490631ea65e5d"
+        }
+      }
+    },
+    "0001_H_AO_SVD/published": {
+      "element_type": "tet4",
+      "elements": 2055236,
+      "points": 357362,
+      "parts": {
+        "svmp": {
+          "archive": "0001_H_AO_SVD__published__svmp.tar.gz",
+          "bytes": 17560235,
+          "sha256": "9ad2901298f61bea1fd3b5ef9bbccae6683e300393d59aac8e20badddaf8c1b9"
+        },
+        "mfem": {
+          "archive": "0001_H_AO_SVD__published__mfem.tar.gz",
+          "bytes": 25759293,
+          "sha256": "a3a6c8fc8530da67174b4c7933cca6df2c29532cdb88c5282e58f4d41c9154cb"
+        }
+      }
+    },
+    "0011_H_AO_H/coarse": {
+      "element_type": "tet4",
+      "elements": 1259119,
+      "points": 223439,
+      "parts": {
+        "svmp": {
+          "archive": "0011_H_AO_H__coarse__svmp.tar.gz",
+          "bytes": 18426156,
+          "sha256": "25b2a469548d10bc88333a0cfe04e9efd644a81b8e30a06d83a2ba9aa7ced43e"
+        },
+        "mfem": {
+          "archive": "0011_H_AO_H__coarse__mfem.tar.gz",
+          "bytes": 22187344,
+          "sha256": "9ccc1c0994117ce56bad7622482ca42ebe9c8a57987f1b7d7d3453843ce4c625"
+        }
+      }
+    },
+    "0011_H_AO_H/fine": {
+      "element_type": "tet4",
+      "elements": 3993392,
+      "points": 705691,
+      "parts": {
+        "svmp": {
+          "archive": "0011_H_AO_H__fine__svmp.tar.gz",
+          "bytes": 57966442,
+          "sha256": "4f8481bcbed97e8c76df981a7d9291bd5c87600b24ca27c674d3449953cd7ccf"
+        },
+        "mfem": {
+          "archive": "0011_H_AO_H__fine__mfem.tar.gz",
+          "bytes": 72593735,
+          "sha256": "d343d68832daab639af3981805df2970292f0e5ba2268d841c0d738178ca00eb"
+        }
+      }
+    },
+    "0011_H_AO_H/medium": {
+      "element_type": "tet4",
+      "elements": 2833752,
+      "points": 500284,
+      "parts": {
+        "svmp": {
+          "archive": "0011_H_AO_H__medium__svmp.tar.gz",
+          "bytes": 40743177,
+          "sha256": "013979cadfae0e5992fd66303ab51e82245871f4becb11e53d9532cc1f93f1b7"
+        },
+        "mfem": {
+          "archive": "0011_H_AO_H__medium__mfem.tar.gz",
+          "bytes": 51003030,
+          "sha256": "af2625b382e5e3a274ecc7e6d0ade5becd0a25b8e2dd02cd9f578ac7126d01ff"
+        }
+      }
+    },
+    "0011_H_AO_H/published": {
+      "element_type": "tet4",
+      "elements": 2989185,
+      "points": 554474,
+      "parts": {
+        "svmp": {
+          "archive": "0011_H_AO_H__published__svmp.tar.gz",
+          "bytes": 38129585,
+          "sha256": "48505bd58619fd1eb0d934d657be8ef423b3cb1216888a744d1dd1dce05a6723"
+        },
+        "mfem": {
+          "archive": "0011_H_AO_H__published__mfem.tar.gz",
+          "bytes": 45125816,
+          "sha256": "873a28a95cdf22f3ded51c97135fcac76e354c70be7ec6a399065cdc32b74617"
+        }
+      }
+    },
+    "0031_H_ABAO_AAA/coarse": {
+      "element_type": "tet4",
+      "elements": 1000019,
+      "points": 184536,
+      "parts": {
+        "svmp": {
+          "archive": "0031_H_ABAO_AAA__coarse__svmp.tar.gz",
+          "bytes": 15984434,
+          "sha256": "894d0763a4926d22e4d4eec3e087347ba83286fc35a631e1c4553bad0179250f"
+        },
+        "mfem": {
+          "archive": "0031_H_ABAO_AAA__coarse__mfem.tar.gz",
+          "bytes": 17756032,
+          "sha256": "67d035ad8a7694927b63e62fd4e75b0942b8a5322daccc863e7ae9331ca0365d"
+        }
+      }
+    },
+    "0031_H_ABAO_AAA/fine": {
+      "element_type": "tet4",
+      "elements": 4966851,
+      "points": 889107,
+      "parts": {
+        "svmp": {
+          "archive": "0031_H_ABAO_AAA__fine__svmp.tar.gz",
+          "bytes": 72163258,
+          "sha256": "a2845c16e14460a73554bcd5fe51e5573d7938e93c24372865ba08800b49b59d"
+        },
+        "mfem": {
+          "archive": "0031_H_ABAO_AAA__fine__mfem.tar.gz",
+          "bytes": 90922817,
+          "sha256": "424ba5371d9f3bfcece2887c22179fd31e19814cf046b4ce23b7643cbefdb895"
+        }
+      }
+    },
+    "0031_H_ABAO_AAA/medium": {
+      "element_type": "tet4",
+      "elements": 2396588,
+      "points": 432758,
+      "parts": {
+        "svmp": {
+          "archive": "0031_H_ABAO_AAA__medium__svmp.tar.gz",
+          "bytes": 35904620,
+          "sha256": "13791f7979595bf3c5a420c483b10cef29b13c3fa9bf0f3e8b985e4991417d8d"
+        },
+        "mfem": {
+          "archive": "0031_H_ABAO_AAA__medium__mfem.tar.gz",
+          "bytes": 43085121,
+          "sha256": "9be412322f1f0c85e37664d44869aa36400913538130e94ecec5631fe7df7bcb"
+        }
+      }
+    },
+    "0031_H_ABAO_AAA/published": {
+      "element_type": "tet4",
+      "elements": 2983028,
+      "points": 550959,
+      "parts": {
+        "svmp": {
+          "archive": "0031_H_ABAO_AAA__published__svmp.tar.gz",
+          "bytes": 40907110,
+          "sha256": "7521c41660fe1388d8653f3b9a8e19805ca69df1882e24a9b38b5786461943f0"
+        },
+        "mfem": {
+          "archive": "0031_H_ABAO_AAA__published__mfem.tar.gz",
+          "bytes": 45986846,
+          "sha256": "663beaf12d0f6170261f218acca822a5cf319de4ebcf6b5dd23a50d920b234b7"
+        }
+      }
+    },
+    "0054_H_PULMFON_TAT/coarse": {
+      "element_type": "tet4",
+      "elements": 1852725,
+      "points": 334919,
+      "parts": {
+        "svmp": {
+          "archive": "0054_H_PULMFON_TAT__coarse__svmp.tar.gz",
+          "bytes": 27685573,
+          "sha256": "9ce119b17f4321cc0af756f9f81550e139d59f5d2e0989e5350585d40dd32074"
+        },
+        "mfem": {
+          "archive": "0054_H_PULMFON_TAT__coarse__mfem.tar.gz",
+          "bytes": 33307357,
+          "sha256": "b17183352e963924788b78b2fd7a606de22cfa82bf52365375f62b4268c7e030"
+        }
+      }
+    },
+    "0054_H_PULMFON_TAT/fine": {
+      "element_type": "tet4",
+      "elements": 4776242,
+      "points": 841793,
+      "parts": {
+        "svmp": {
+          "archive": "0054_H_PULMFON_TAT__fine__svmp.tar.gz",
+          "bytes": 68688511,
+          "sha256": "cd978b8c84df953e48143498cf3f93dcd382d82aa9961d91d7370153d0541a4a"
+        },
+        "mfem": {
+          "archive": "0054_H_PULMFON_TAT__fine__mfem.tar.gz",
+          "bytes": 87169746,
+          "sha256": "4727dfbbbc276baff0e27f4909838c7fb42ce233e98df1fc28de6c5382a5aad2"
+        }
+      }
+    },
+    "0054_H_PULMFON_TAT/medium": {
+      "element_type": "tet4",
+      "elements": 3834675,
+      "points": 686846,
+      "parts": {
+        "svmp": {
+          "archive": "0054_H_PULMFON_TAT__medium__svmp.tar.gz",
+          "bytes": 55557755,
+          "sha256": "e14793a2a25f6cd77a9e0001defe22615cef8b91a04e15e99854e6a15c798389"
+        },
+        "mfem": {
+          "archive": "0054_H_PULMFON_TAT__medium__mfem.tar.gz",
+          "bytes": 70278497,
+          "sha256": "5349b75ea4157e4f03998aaf597ccd5d37e676e7622332a206c9186f1ea5383b"
+        }
+      }
+    },
+    "0054_H_PULMFON_TAT/published": {
+      "element_type": "tet4",
+      "elements": 1010672,
+      "points": 200758,
+      "parts": {
+        "svmp": {
+          "archive": "0054_H_PULMFON_TAT__published__svmp.tar.gz",
+          "bytes": 14754988,
+          "sha256": "bbd79c331a71167bc2ba90ef2a7bc68cf1629835f952e43914f9d1c6cd3b00c9"
+        },
+        "mfem": {
+          "archive": "0054_H_PULMFON_TAT__published__mfem.tar.gz",
+          "bytes": 15570279,
+          "sha256": "52cf89b88d58965359781f595825addf8ae0b2865489432a159404c721961b5f"
+        }
+      }
+    },
+    "0065_H_PULMFON_SVD/coarse": {
+      "element_type": "tet4",
+      "elements": 1738199,
+      "points": 312376,
+      "parts": {
+        "svmp": {
+          "archive": "0065_H_PULMFON_SVD__coarse__svmp.tar.gz",
+          "bytes": 25522974,
+          "sha256": "d8dfab652ec95e903b53eac4e9cd490abec3408ac9c6ebec432effafad897392"
+        },
+        "mfem": {
+          "archive": "0065_H_PULMFON_SVD__coarse__mfem.tar.gz",
+          "bytes": 30940910,
+          "sha256": "5d94d2be9bde328ce39f0180a72bdee36b24582cc39177646d674d63f5993a32"
+        }
+      }
+    },
+    "0065_H_PULMFON_SVD/fine": {
+      "element_type": "tet4",
+      "elements": 5549704,
+      "points": 966246,
+      "parts": {
+        "svmp": {
+          "archive": "0065_H_PULMFON_SVD__fine__svmp.tar.gz",
+          "bytes": 79117927,
+          "sha256": "fc787876ea548f2a9fa0d13adfb4c6414686b874f4779fd135e3b899d3c3b2dc"
+        },
+        "mfem": {
+          "archive": "0065_H_PULMFON_SVD__fine__mfem.tar.gz",
+          "bytes": 100859157,
+          "sha256": "4decb0bdca5e0b02f24dddcdd220b29055d8bbcc2f3a1f18312722b8fbe693fa"
+        }
+      }
+    },
+    "0065_H_PULMFON_SVD/medium": {
+      "element_type": "tet4",
+      "elements": 2509520,
+      "points": 451759,
+      "parts": {
+        "svmp": {
+          "archive": "0065_H_PULMFON_SVD__medium__svmp.tar.gz",
+          "bytes": 37584287,
+          "sha256": "a87b2c665bc0baf5a0f9ca421924acb406d241736c2b9b69bd52753b26058bc3"
+        },
+        "mfem": {
+          "archive": "0065_H_PULMFON_SVD__medium__mfem.tar.gz",
+          "bytes": 45369590,
+          "sha256": "c7c570d3aceae4ebb4cd772511a6cbf10279863ba0dc206e553197f2f06f7a2f"
+        }
+      }
+    },
+    "0065_H_PULMFON_SVD/published": {
+      "element_type": "tet4",
+      "elements": 1060146,
+      "points": 206104,
+      "parts": {
+        "svmp": {
+          "archive": "0065_H_PULMFON_SVD__published__svmp.tar.gz",
+          "bytes": 13923943,
+          "sha256": "096b1dfecb7e07e87c790786e6ee764e749459ffc61f69504b2e69d241a02c0a"
+        },
+        "mfem": {
+          "archive": "0065_H_PULMFON_SVD__published__mfem.tar.gz",
+          "bytes": 15484323,
+          "sha256": "8c4414b5766ba9b85b16a6e44582fd51b15f66bb7d56ffc66fcba56845c5e607"
+        }
+      }
+    },
+    "aaa_idealized/coarse": {
+      "element_type": "tet4",
+      "elements": 947570,
+      "points": 163600,
+      "parts": {
+        "svmp": {
+          "archive": "aaa_idealized__coarse__svmp.tar.gz",
+          "bytes": 12968667,
+          "sha256": "c69d9746c75e8e205adc016bfe438b015a62942309d4cd45f440cf1563f468db"
+        },
+        "mfem": {
+          "archive": "aaa_idealized__coarse__mfem.tar.gz",
+          "bytes": 16331495,
+          "sha256": "7f9d6dc4a36f34fc33cb5fd1e7f3ae2b9fbe15407d8408665a2d7c8c4d6617ea"
+        }
+      }
+    },
+    "aaa_idealized/fine": {
+      "element_type": "tet4",
+      "elements": 4240401,
+      "points": 732000,
+      "parts": {
+        "svmp": {
+          "archive": "aaa_idealized__fine__svmp.tar.gz",
+          "bytes": 57453584,
+          "sha256": "c870fc42f22cea693e72c4f265a8565b3b02e944effdb1f6540f9f7adb1ae875"
+        },
+        "mfem": {
+          "archive": "aaa_idealized__fine__mfem.tar.gz",
+          "bytes": 76297624,
+          "sha256": "d6ecc9e4d98f5cf3231ecdcf542a6daf6813d80cbce7a339d3fc6c9242fcae59"
+        }
+      }
+    },
+    "aaa_idealized/medium": {
+      "element_type": "tet4",
+      "elements": 2944823,
+      "points": 512719,
+      "parts": {
+        "svmp": {
+          "archive": "aaa_idealized__medium__svmp.tar.gz",
+          "bytes": 40815507,
+          "sha256": "ba34fcd4192133a5697b97d89d5f1c645781b7ac68d5052039f8f89eb6ee2d6c"
+        },
+        "mfem": {
+          "archive": "aaa_idealized__medium__mfem.tar.gz",
+          "bytes": 52850520,
+          "sha256": "a9a8e664f17e4e226bcb5ee51e35382f451f4ff23b1221233b6f1f618ffb0821"
+        }
+      }
+    },
+    "aorta_0159_H_AO_H/coarse": {
+      "element_type": "tet4",
+      "elements": 959194,
+      "points": 170091,
+      "parts": {
+        "svmp": {
+          "archive": "aorta_0159_H_AO_H__coarse__svmp.tar.gz",
+          "bytes": 13619374,
+          "sha256": "b3633859123af3ef1a53a04be001a9281653cfb674be60a327f9dd3d67af92a2"
+        },
+        "mfem": {
+          "archive": "aorta_0159_H_AO_H__coarse__mfem.tar.gz",
+          "bytes": 16536345,
+          "sha256": "7a9a4489dcac66c0a5d1430a1843123ea36a733e6fe6143e1ec750e3b77ec45b"
+        }
+      }
+    },
+    "aorta_0159_H_AO_H/fine": {
+      "element_type": "tet4",
+      "elements": 4401147,
+      "points": 778827,
+      "parts": {
+        "svmp": {
+          "archive": "aorta_0159_H_AO_H__fine__svmp.tar.gz",
+          "bytes": 61546692,
+          "sha256": "440852d59925de8f57a708b32a25fecbdfc999dd4ec622fd45dc9886a7432faa"
+        },
+        "mfem": {
+          "archive": "aorta_0159_H_AO_H__fine__mfem.tar.gz",
+          "bytes": 79651462,
+          "sha256": "b5740933005926e55182517df0216598f0f762ddddff3f80a1310b89ced65658"
+        }
+      }
+    },
+    "aorta_0159_H_AO_H/medium": {
+      "element_type": "tet4",
+      "elements": 3519334,
+      "points": 555089,
+      "parts": {
+        "svmp": {
+          "archive": "aorta_0159_H_AO_H__medium__svmp.tar.gz",
+          "bytes": 41904951,
+          "sha256": "0de04adbe39acf04a55a94488cfb76d6aa931d5ef2d13861318011a42bd8194e"
+        },
+        "mfem": {
+          "archive": "aorta_0159_H_AO_H__medium__mfem.tar.gz",
+          "bytes": 58016162,
+          "sha256": "eb0ae6ca21d1a6200df5af07aba1cce2bee9892fb30820bc19ecc138da1e8f30"
+        }
+      }
+    },
+    "aortoiliac_svmp_iliac/coarse": {
+      "element_type": "tet4",
+      "elements": 1162446,
+      "points": 206853,
+      "parts": {
+        "svmp": {
+          "archive": "aortoiliac_svmp_iliac__coarse__svmp.tar.gz",
+          "bytes": 17080374,
+          "sha256": "e39cd62435989ae6b65f07ccbc67d915028d4088aa4c23751ac0f5cb8647306c"
+        },
+        "mfem": {
+          "archive": "aortoiliac_svmp_iliac__coarse__mfem.tar.gz",
+          "bytes": 20514044,
+          "sha256": "6eac6d4728ebaf933afe94b28995b80e6ea555c0c3330b81b7a940c353f12a68"
+        }
+      }
+    },
+    "aortoiliac_svmp_iliac/fine": {
+      "element_type": "tet4",
+      "elements": 5161455,
+      "points": 908401,
+      "parts": {
+        "svmp": {
+          "archive": "aortoiliac_svmp_iliac__fine__svmp.tar.gz",
+          "bytes": 74030640,
+          "sha256": "7d9a805bc8262bfcc4ba6f6931ad531e7d87128fe90d9f3411ee13198de131ad"
+        },
+        "mfem": {
+          "archive": "aortoiliac_svmp_iliac__fine__mfem.tar.gz",
+          "bytes": 94527323,
+          "sha256": "1766964211414366ba67483f5bbe7560aabf8efb2ed45a146cf612be5b5f64bf"
+        }
+      }
+    },
+    "aortoiliac_svmp_iliac/medium": {
+      "element_type": "tet4",
+      "elements": 2644731,
+      "points": 467559,
+      "parts": {
+        "svmp": {
+          "archive": "aortoiliac_svmp_iliac__medium__svmp.tar.gz",
+          "bytes": 37801206,
+          "sha256": "316447cd939a45281e1534523b234b50239442bd6c5f3db1952017cc8f688f1d"
+        },
+        "mfem": {
+          "archive": "aortoiliac_svmp_iliac__medium__mfem.tar.gz",
+          "bytes": 47709299,
+          "sha256": "d4d8bea80468ddf5918c1fd95a3fe3fb992741e003762fe6688f86319fbf352d"
+        }
+      }
+    },
+    "pipe/coarse": {
+      "element_type": "tet4",
+      "elements": 1311300,
+      "points": 224645,
+      "parts": {
+        "svmp": {
+          "archive": "pipe__coarse__svmp.tar.gz",
+          "bytes": 17002882,
+          "sha256": "9b06dd1005f365a5e29f1891d8aab26ddbc1251ad3b934ae71d64ce1845672b6"
+        },
+        "mfem": {
+          "archive": "pipe__coarse__mfem.tar.gz",
+          "bytes": 22595123,
+          "sha256": "80e190e45067c7bcfc88a89c14d4b708fde6a77baf67c873bd8cbc507c34eb8e"
+        }
+      }
+    },
+    "pipe/fine": {
+      "element_type": "tet4",
+      "elements": 5538105,
+      "points": 953902,
+      "parts": {
+        "svmp": {
+          "archive": "pipe__fine__svmp.tar.gz",
+          "bytes": 75220241,
+          "sha256": "6617d8fcbe960fc4efd37c062e0ba175f7779c381d73b0329ee05fd167e23a9c"
+        },
+        "mfem": {
+          "archive": "pipe__fine__mfem.tar.gz",
+          "bytes": 100384672,
+          "sha256": "9bc937a3986a26ac1f5959606e667c09fa5237b6c2895c1c0f413438c0a002f5"
+        }
+      }
+    },
+    "pipe/medium": {
+      "element_type": "tet4",
+      "elements": 3854674,
+      "points": 667076,
+      "parts": {
+        "svmp": {
+          "archive": "pipe__medium__svmp.tar.gz",
+          "bytes": 52919757,
+          "sha256": "215ab950861d69beb91dbf3fdf6ede79fdd4c50ac485eeceace3f0382edf2567"
+        },
+        "mfem": {
+          "archive": "pipe__medium__mfem.tar.gz",
+          "bytes": 69610900,
+          "sha256": "19b66a8147e0b44199f953f1e595296974a6eb665b340f09fcd51d9526ffd89c"
+        }
+      }
+    },
+    "pipe_hex/coarse": {
+      "element_type": "hex8",
+      "elements": 1445570,
+      "points": 1476792,
+      "parts": {
+        "svmp": {
+          "archive": "pipe_hex__coarse__svmp.tar.gz",
+          "bytes": 20225763,
+          "sha256": "a392ccc8dab12eb46de96072670d7782dff5f550841846e2ca392b34c5c9449a"
+        },
+        "mfem": {
+          "archive": "pipe_hex__coarse__mfem.tar.gz",
+          "bytes": 29446552,
+          "sha256": "e497e8b93a995d5424f87325ad08404012ff890cdd2ec8aae882f0f6f34b2368"
+        }
+      }
+    },
+    "pipe_hex/fine": {
+      "element_type": "hex8",
+      "elements": 4672512,
+      "points": 4741209,
+      "parts": {
+        "svmp": {
+          "archive": "pipe_hex__fine__svmp.tar.gz",
+          "bytes": 70042892,
+          "sha256": "ee7432e5e69ace8283bab524bcd1f8a61ba63fbb573b1995bece9309218fa599"
+        },
+        "mfem": {
+          "archive": "pipe_hex__fine__mfem.tar.gz",
+          "bytes": 99061701,
+          "sha256": "1adcfd832c11b3f3641b326744c4f39e940fcb86f30c380f21fd9160f3049083"
+        }
+      }
+    },
+    "pipe_hex/medium": {
+      "element_type": "hex8",
+      "elements": 2828496,
+      "points": 2877736,
+      "parts": {
+        "svmp": {
+          "archive": "pipe_hex__medium__svmp.tar.gz",
+          "bytes": 39124685,
+          "sha256": "84bb40577ad3004f8a48c2242e72e4e47d5d37bbabc2a2f8cff0813e3c06765e"
+        },
+        "mfem": {
+          "archive": "pipe_hex__medium__mfem.tar.gz",
+          "bytes": 57948638,
+          "sha256": "4fcfa0af1976d4b0aa2d0e4e3cf7db5b6554993f90d8ee1dc92d8b971f022206"
+        }
+      }
+    },
+    "stanford_reference/pipe_1M": {
+      "element_type": "tet4",
+      "elements": 1002240,
+      "points": 181875,
+      "parts": {
+        "svmp": {
+          "archive": "stanford_reference__pipe_1M__svmp.tar.gz",
+          "bytes": 10573741,
+          "sha256": "ec458948b6e00ff47b16420899636c6c07c637e877c0f96041000b6347e73a6e"
+        },
+        "mfem": {
+          "archive": "stanford_reference__pipe_1M__mfem.tar.gz",
+          "bytes": 6710663,
+          "sha256": "f949d13133856ff5432b063d09514ea6e592ed3db9a3623706942451e0f9b935"
+        }
+      }
+    },
+    "tcpc_idealized/coarse": {
+      "element_type": "tet4",
+      "elements": 1100781,
+      "points": 192232,
+      "parts": {
+        "svmp": {
+          "archive": "tcpc_idealized__coarse__svmp.tar.gz",
+          "bytes": 15618098,
+          "sha256": "20d44874703adbc85e0ecfda92262618b81c307ea5730af700d56b194b19e170"
+        },
+        "mfem": {
+          "archive": "tcpc_idealized__coarse__mfem.tar.gz",
+          "bytes": 19283516,
+          "sha256": "b90eb7321992e928686047eef9fcc42d16b48ad7d735185894b0f7b1fbe696e8"
+        }
+      }
+    },
+    "tcpc_idealized/fine": {
+      "element_type": "tet4",
+      "elements": 5749055,
+      "points": 924396,
+      "parts": {
+        "svmp": {
+          "archive": "tcpc_idealized__fine__svmp.tar.gz",
+          "bytes": 71303117,
+          "sha256": "aa23ec473afdc1ed642b2b05a984c76cd127c755cb0fbd759264b179b1bb3497"
+        },
+        "mfem": {
+          "archive": "tcpc_idealized__fine__mfem.tar.gz",
+          "bytes": 99908896,
+          "sha256": "517f463993f5f79087f9937bbdd54eae4ffca2b26bb3f6a823c311171e181f44"
+        }
+      }
+    },
+    "tcpc_idealized/medium": {
+      "element_type": "tet4",
+      "elements": 3662580,
+      "points": 638054,
+      "parts": {
+        "svmp": {
+          "archive": "tcpc_idealized__medium__svmp.tar.gz",
+          "bytes": 50701139,
+          "sha256": "bb5adbda7cf0a44394c5e7b23dd7a47faa5a61682ca74e6956db9511c546d7de"
+        },
+        "mfem": {
+          "archive": "tcpc_idealized__medium__mfem.tar.gz",
+          "bytes": 66486370,
+          "sha256": "29d4481c60c18952a76a6950264d6a15d5e90c3583dc889d6ef194bc3dc39686"
+        }
+      }
+    }
+  }
+}

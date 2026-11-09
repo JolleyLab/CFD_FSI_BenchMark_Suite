@@ -1,0 +1,14 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall",
+    "2": "cap_outlet_LPA",
+    "3": "cap_outlet_RPA",
+    "4": "cap_inlet_SVC",
+    "5": "cap_inlet_IVC"
+  },
+  "notes": null,
+  "length_unit": "cm"
+}

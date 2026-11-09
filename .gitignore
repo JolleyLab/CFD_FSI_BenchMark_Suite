@@ -1,0 +1,11 @@
+# meshes are fetched, not committed
+cases/*/*/mesh/
+cases/*/*/mfem/*.mesh
+cases/*/*/mfem/*.msh
+cases/*/*/LICENSE
+cases/*/*/DATA_LICENSE.md
+*.tar.gz
+*-procs/
+solver.run.xml
+run_*.log
+__pycache__/

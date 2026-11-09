@@ -1,0 +1,31 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall",
+    "2": "cap_inflow",
+    "3": "cap_LPA_ul1_final",
+    "4": "cap_LPA_ul2_final",
+    "5": "cap_LPA_ulbr_final",
+    "6": "cap_LPA_ul_final",
+    "7": "cap_LPA_ml_final",
+    "8": "cap_LML_final",
+    "9": "cap_LMML_final",
+    "10": "cap_LML2_final",
+    "11": "cap_LPA_br1_final",
+    "12": "cap_LPA",
+    "13": "cap_LPA_llbr_final",
+    "14": "cap_RPA_br3_final",
+    "15": "cap_RPA_br2_final",
+    "16": "cap_RPA_mmbr_final",
+    "17": "cap_RUML2_final",
+    "18": "cap_RPA_mm_final",
+    "19": "cap_RPA_ml_final",
+    "20": "cap_RPA_mlbr_final",
+    "21": "cap_RPA_br1_final",
+    "22": "cap_RPA"
+  },
+  "notes": null,
+  "length_unit": "cm"
+}

@@ -1,0 +1,11 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall",
+    "2": "cap_outlet",
+    "3": "cap_inlet"
+  },
+  "length_unit": "cm"
+}

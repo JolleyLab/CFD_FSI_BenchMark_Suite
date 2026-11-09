@@ -1,0 +1,14 @@
+# Basic checks on every push and pull request (no mesh downloads, no solver; a few minutes).
+# tests/test_suite.py: release index and checksums, case files in git, tools compile, and the
+# committed tiny pipe case (about 15 k tets) through the full verifier and an MFEM round trip.
+name: ci
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - run: python tests/test_suite.py

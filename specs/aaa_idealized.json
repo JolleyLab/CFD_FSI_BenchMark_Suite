@@ -1,0 +1,69 @@
+{
+  "name": "aaa_idealized",
+  "description": "Idealized infrarenal abdominal aortic aneurysm: 2.0 cm neck, fusiform sac to 5.5 cm, aorto-iliac bifurcation into 1.2 cm iliacs; rigid-wall CFD (ALE/FSI variant: see hex and wall-layer notes). Synthetic stand-in for VMR 0031_H_ABAO_AAA until that project is pulled.",
+  "surface": "surfaces/aaa_idealized_model.vtp",
+  "source": {
+    "generator": "tools/make_synthetic.py aaa_idealized (signed-distance tubes -> marching cubes -> VMTK remesh -> planar clips -> VMTK caps)"
+  },
+  "license": "synthetic; released with the suite (BSD-3-Clause / CC0 at the maintainers' choice)",
+  "units": "cm",
+  "face_id_array": "ModelFaceID",
+  "cap_id_array": "CapID",
+  "surface_is_capped": true,
+  "faces": {
+    "4": "cap_inlet_infrarenal_aorta",
+    "2": "cap_outlet_left_common_iliac",
+    "3": "cap_outlet_right_common_iliac",
+    "1": "wall"
+  },
+  "bc": {
+    "inflow": {
+      "cap": "cap_inlet_infrarenal_aorta",
+      "waveform": "aortic",
+      "mean_flow_cm3s": 20.0,
+      "period_s": 1.0
+    },
+    "outlets": {
+      "type": "RCR",
+      "mean_pressure_mmHg": 95.0,
+      "Rp_fraction": 0.09,
+      "C_total_cm5_per_dyn": 0.00025,
+      "area_exponent": 1.0
+    }
+  },
+  "solver": {
+    "time_step_s": 0.001,
+    "cycles": 1,
+    "save_every": 50,
+    "density": 1.06,
+    "viscosity": 0.04
+  },
+  "mesher": "netgen",
+  "calibration_h": 0.15,
+  "resolutions": {
+    "coarse": 1500000,
+    "medium": 3000000,
+    "fine": 5000000
+  },
+  "tolerance": 0.35,
+  "max_attempts": 2,
+  "calibration": {
+    "h": 0.15,
+    "n_tets": 897478,
+    "seconds": 210.7898678779602
+  },
+  "observations": [
+    [
+      0.10032105976975443,
+      4565959
+    ],
+    [
+      0.11130048114060256,
+      2944823
+    ],
+    [
+      0.09818677441819036,
+      4240401
+    ]
+  ]
+}

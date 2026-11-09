@@ -1,0 +1,20 @@
+{
+  "element_attributes": {
+    "1": "fluid"
+  },
+  "boundary_attributes": {
+    "1": "wall",
+    "2": "cap_inflow",
+    "3": "cap_celiac_hepatic",
+    "4": "cap_celiac_splenic",
+    "5": "cap_ext_iliac_left",
+    "6": "cap_ext_iliac_right",
+    "7": "cap_int_iliac_left",
+    "8": "cap_int_iliac_right",
+    "9": "cap_renal_left",
+    "10": "cap_renal_right",
+    "11": "cap_SMA"
+  },
+  "notes": null,
+  "length_unit": "cm"
+}

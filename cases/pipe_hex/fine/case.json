@@ -1,0 +1,31 @@
+{
+  "name": "pipe_hex",
+  "resolution": "fine",
+  "grid": {
+    "n_core": 52,
+    "n_rad": 26,
+    "nz": 577,
+    "h": 0.0191
+  },
+  "elements": {
+    "hex8": 4672512,
+    "points": 4741209
+  },
+  "faces": {
+    "1": "wall",
+    "2": "cap_inlet",
+    "3": "cap_outlet"
+  },
+  "boundary_conditions": {
+    "cap_inlet": "aortic waveform, mean 30 cm3/s",
+    "cap_outlet": {
+      "Rp": 359.9694,
+      "C": 0.00015,
+      "Rd": 3639.6906000000004,
+      "Pd": 0.0
+    }
+  },
+  "units": "cm",
+  "purpose": "performance and accuracy comparisons; finest level for convergence (GCI) studies",
+  "element_type": "hex8"
+}

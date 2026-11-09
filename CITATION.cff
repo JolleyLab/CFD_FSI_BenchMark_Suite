@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this suite, please cite it as below, and acknowledge the data sources listed in DATA_LICENSE.md."
+title: "CFD Benchmark Suite"
+version: "v1.0"
+date-released: 2026-11-09
+type: dataset
+authors:
+  - family-names: Jolley
+    given-names: Matthew A.
+    affiliation: "Children's Hospital of Philadelphia"
+  - name: "Jolley Lab, Children's Hospital of Philadelphia"
+repository-code: "https://github.com/JolleyLab/CFD_FSI_BenchMark_Suite"
+license: BSD-3-Clause
+keywords: [CFD, benchmark, svMultiPhysics, MFEM, aorta, aneurysm, Fontan, mesh]
+references:
+  - type: article
+    title: "The Vascular Model Repository: A Public Resource of Medical Imaging Data and Blood Flow Simulation Results"
+    authors:
+      - family-names: Wilson
+        given-names: N. M.
+      - family-names: Ortiz
+        given-names: A. K.
+      - family-names: Johnson
+        given-names: A. B.
+    journal: "Journal of Medical Devices"
+    volume: 7
+    issue: 4
+    start: "040923"
+    year: 2013
+    doi: 10.1115/1.4025983
