@@ -1,45 +1,85 @@
-# CFD/FSI Benchmark Suite
+# CFD Benchmark Suite
 
-Open cardiovascular CFD cases at three sizes (about 1.5 M, 3 M and 5 M elements), each ready
-to run in **svMultiPhysics** and to load in **MFEM**, so GPU-accelerated solvers (Trilinos/Kokkos,
-MFEM, Warp, CUDA, ...) can be timed and checked on the same meshes and boundary conditions.
-The geometries are patient models from the
-[Vascular Model Repository](https://www.vascularmodel.com) (VMR), with the boundary conditions
-published with them, plus a small synthetic tier. Everything is regenerable from `tools/`.
+A standard, open set of cardiovascular CFD cases for testing and comparing CFD frameworks on the
+same data. Each case fixes everything except the solver: geometry, meshes at several sizes,
+boundary conditions, fluid properties and units. Results and timings from different codes,
+hardware and institutions can then be compared directly.
 
-Jolley Lab, Children's Hospital of Philadelphia, 2026. Built with the SlicerHeart / SimVascular
-Slicer meshing modules run headless; see [Credits](#credits) and `REFERENCES.md`.
+The cases are patient models from the [Vascular Model Repository](https://www.vascularmodel.com)
+(VMR), aortas, an abdominal aortic aneurysm and Fontan circulations, with the boundary conditions
+published with them, plus synthetic cases (idealized AAA and Fontan, straight pipes) for
+verification. Meshes range from about 1 M to 5.8 M linear elements. Every case is ready to run in
+svMultiPhysics, and the meshes come in two neutral formats, VTK XML and Gmsh 2.2, which MFEM
+and Gmsh read directly and most other finite element and finite volume codes read through Gmsh
+or meshio.
+Everything is regenerable from the scripts in `tools/`.
+
+Typical uses:
+
+- **Performance:** time per step, strong and weak scaling, CPU against GPU, on identical meshes
+  from about 1 M to 5.8 M elements.
+- **Verification and comparison:** run the same case in two frameworks and compare pressures,
+  flows and wall shear stress; three mesh levels per case support a grid convergence study.
+- **Regression testing:** the verifier and the small test case run in CI.
+
+Jolley Lab, Children's Hospital of Philadelphia, 2026. Meshes built with the SlicerHeart and
+SimVascular Slicer modules run headless; see [Credits](#credits) and `REFERENCES.md`.
 
 ## Quick start
 
 ```sh
+git clone https://github.com/JolleyLab/CFD_FSI_BenchMark_Suite.git && cd CFD_FSI_BenchMark_Suite
 python tools/fetch_meshes.py --list                              # cases, levels, element counts, zip sizes
 python tools/fetch_meshes.py 0031_H_ABAO_AAA/medium --solver svmp
-cd cases/0031_H_ABAO_AAA/medium
-./run.sh 8 20                                   # 8 MPI ranks, 20 time steps
+cd cases/0031_H_ABAO_AAA/medium && ./run.sh 8 20                # svMultiPhysics: 8 MPI ranks, 20 time steps
 ```
 
-Meshes are not stored in git. They are assets of the suite's
+Meshes are not stored in git. They are assets of the
 [GitHub Release](https://github.com/JolleyLab/CFD_FSI_BenchMark_Suite/releases) (v1.0): one zip per
 case (17 to 373 MB) holding every level. `fetch_meshes.py` downloads the zip for each case you
-name and extracts only the levels and solver you ask for: `--solver svmp` (svMultiPhysics
-mesh-complete) or `--solver mfem` (Gmsh `.msh`). It needs only the Python standard library, checks
-each zip's SHA-256 (`meshes.json`, `SHA256SUMS`), keeps the zip in `.downloads/` for reuse, and
-needs no GitHub login.
-`pip install -r requirements.txt` is needed only for the verifier and the build tools.
+name and extracts only the levels and format you ask for: `--solver svmp` (VTK XML
+mesh-complete) or `--solver mfem` (Gmsh `.msh`). It needs only the Python standard library,
+checks each zip's SHA-256 (`meshes.json`, `SHA256SUMS`), keeps the zip in `.downloads/` for
+reuse, and needs no GitHub login. `pip install -r requirements.txt` is needed only for the
+verifier and the build tools.
 
-`run.sh` uses `$SVMULTIPHYSICS`, else `svmultiphysics` on the PATH, else the official Docker
-image `simvascular/solver:latest`, and writes the wall time to `run_<ranks>x<steps>.log`.
+## Using a case with your framework
 
-**MFEM:** `mfem/<case>_<level>.msh` (Gmsh 2.2, binary), read directly by MFEM
-(`mfem::Mesh mesh("0031_H_ABAO_AAA_medium.msh");`). Element attribute 1 = fluid; boundary
-attribute = face, named in `mfem/*_attributes.json` and in the file's physical names
-(`cap_inflow`, `cap_<outlet>`, `wall`). Inflow waveform and every outlet's RCR values are in
-`case.json` and `solver.xml`. If you want MFEM's own ASCII format, `python tools/msh_to_mfem.py
-cases/<case>/<level>` writes `mfem/<case>_<level>.mesh` (`--gzip` for `.mesh.gz`); it is the
-same mesh, array for array (checked by `tools/compare_mfem_gmsh.py` on every level before release).
+Each case level, `cases/<case>/<level>/`, gives you:
+
+- **Mesh:** `mesh/mesh-complete.mesh.vtu` (volume, VTK XML) with one `mesh/mesh-surfaces/<face>.vtp`
+  per boundary face, or `mfem/<case>_<level>.msh` (Gmsh 2.2 binary) with the same mesh. Element
+  attribute 1 is the fluid; each boundary face has an integer id, named in
+  `mfem/*_attributes.json` and in the Gmsh physical names (`cap_inflow`, `cap_<outlet>`, `wall`).
+- **Boundary conditions:** in `case.json`, by face name. A periodic inflow waveform (also as
+  `<cap>.flow`, time and flow rate; negative flow enters the domain, as in svMultiPhysics), a
+  three-element Windkessel (RCR) or resistance on each outlet, and rigid no-slip walls.
+- **Fluid and units:** CGS throughout (cm, g, s); density 1.06 g/cm³, viscosity 0.04 P.
+- **Reference setup:** `solver.xml` is the svMultiPhysics input. It is a complete, readable record
+  of the time step, number of steps and BC types to mirror in another code.
+
+**MFEM:** `mfem::Mesh mesh("0031_H_ABAO_AAA_medium.msh");` loads the mesh with its attributes.
+For MFEM's own ASCII format, `python tools/msh_to_mfem.py cases/<case>/<level>` writes
+`mfem/<case>_<level>.mesh` (`--gzip` for `.mesh.gz`); it is the same mesh, array for array
+(checked by `tools/compare_mfem_gmsh.py` on every level before release).
+
+**svMultiPhysics:** `run.sh` uses `$SVMULTIPHYSICS`, else `svmultiphysics` on the PATH, else the
+official Docker image `simvascular/solver:latest`, and writes the wall time to
+`run_<ranks>x<steps>.log`.
 
 **Check a case:** `python tools/verify_case.py cases/<case>/<level>`.
+
+## Reporting results
+
+So that results line up across platforms and institutions, report with each run:
+
+- suite version and case level (for example `v1.0, 0031_H_ABAO_AAA/fine`) and the element count;
+- framework and version, discretization (element order, stabilization), linear solver and
+  preconditioner, tolerances, time step and number of steps;
+- hardware (CPU or GPU model and count, nodes, MPI ranks) and wall time per time step, excluding
+  setup, with setup time reported separately;
+- for comparisons of results: outlet flows and pressures over the last cycle, and wall shear
+  stress on the named faces.
 
 ## Cases
 
